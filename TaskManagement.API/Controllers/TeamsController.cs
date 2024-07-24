@@ -47,7 +47,7 @@ namespace TaskManagement.API.Controllers
 
         // POST To create new Team
         // POST: https://localhost:portnumber/api/teams
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> Create([FromBody] AddTeamRequestDto addTeamRequestDto)
         {
             var teamDomainModel = mapper.Map<Team>(addTeamRequestDto);

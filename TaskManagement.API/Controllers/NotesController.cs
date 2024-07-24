@@ -46,6 +46,19 @@ namespace TaskManagement.API.Controllers
             return Ok(mapper.Map<NoteDto>(notesDomainModel));
         }
 
+        // GET all NOTE (By EmpTaskId)
+        // GET: https://localhost:portnumber/api/notes/emptasks/{empTaskId}
+        [HttpGet]
+        [Route("/api/Notes/EmpTasks/{empTaskId:guid}")]
+        public async Task<IActionResult> GetByEmpTask([FromRoute] Guid empTaskId)
+        {
+            var noteDomainModel = await noteRepository.GetByEmpTaskIdAsync(empTaskId);
+
+            if (noteDomainModel == null) { return NotFound(); }
+
+            return Ok(mapper.Map<List<NoteDto>>(noteDomainModel));
+        }
+
         // POST TO CREATE NEW NOTE
         // POST: https://localhost:portnumber/api/notes
         [HttpPost]

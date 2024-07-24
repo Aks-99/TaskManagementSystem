@@ -9,5 +9,7 @@ namespace TaskManagement.API.Repositories
         Task<Note> CreateAsync(Note note);
         Task<Note?> UpdateAsync(Guid id, Note note);
         Task<Note?> DeleteAsync(Guid id);
+
+        Task<List<Note>?> GetByEmpTaskIdAsync(Guid empTaskId);
     }
 }

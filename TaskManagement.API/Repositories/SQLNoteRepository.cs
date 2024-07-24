@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using TaskManagement.API.Data;
 using TaskManagement.API.Models.Domain;
 
@@ -56,6 +57,22 @@ namespace TaskManagement.API.Repositories
             await dbContext.SaveChangesAsync();
 
             return existingNote;
+        }
+
+        public async Task<List<Note>?> GetByEmpTaskIdAsync(Guid empTaskId)
+        {
+            List<Note>? notesByEmpTask = new List<Note>();
+
+            var notes = dbContext.Notes;
+
+            foreach (var note in notes)
+            {
+                if (note.EmpTaskId == empTaskId) { notesByEmpTask.Add(note); }
+            }
+
+            if (notesByEmpTask.IsNullOrEmpty()) { return null; }
+
+            return notesByEmpTask;
         }
     }
 }
