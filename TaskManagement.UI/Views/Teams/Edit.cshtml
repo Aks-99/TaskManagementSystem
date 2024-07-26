@@ -1,0 +1,27 @@
+﻿@model TaskManagement.UI.Models.DTO.TeamDto
+@{
+}
+
+<h1 class="mt-3">Edit Team</h1>
+
+@if (Model is not null)
+{
+    <form method="post">
+        <div class="mt-3">
+            <label class="form-label">Id</label>
+            <input type="text" class="form-control" asp-for="Id" readonly/>
+        </div>
+        <div class="mt-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" asp-for="Name" />
+        </div>
+        <div class="mt-3">
+            <label class="form-label">Lead Name</label>
+            <input type="text" class="form-control" asp-for="LeadName" />
+        </div>
+        <div class="mt-3 d-flex justify-content-between">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <button class="btn btn-danger" type="submit" asp-controller="Teams" asp-action="Delete">Delete</button>
+        </div>
+    </form>
+}

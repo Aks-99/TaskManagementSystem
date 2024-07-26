@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TaskManagement.UI.Models.DTO.NoteDto>
+
+@{
+}
+
+<h1 class="mt-3">Notes</h1>
+
+<div class="d-flex justify-content-end">
+    <a class="btn btn-secondary" asp-controller="Notes" asp-action="Add">Add Note</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Comments</td>
+            <td>Emp Task ID</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model)
+        {
+            <tr>
+                <td>@note.Id</td>
+                <td>@note.Comments</td>
+                <td>@note.EmpTaskId</td>
+                <td>
+                    <a class="btn btn-light" asp-controller="Notes" asp-action="Edit" asp-route-id="@note.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TaskManagement.UI.Models.DTO.TeamDto>
+
+@{
+}
+
+<h1 class="mt-3">Teams</h1>
+
+<div class="d-flex justify-content-end">
+    <a class="btn btn-secondary" asp-controller="Teams" asp-action="Add">Add Team</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Lead Name</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model)
+        {
+            <tr>
+                <td>@team.Id</td>
+                <td>@team.Name</td>
+                <td>@team.LeadName</td>
+                <td>
+                    <a class="btn btn-light" asp-controller="Teams" asp-action="Edit" asp-route-id="@team.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
